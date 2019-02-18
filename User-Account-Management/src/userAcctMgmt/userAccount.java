@@ -1,5 +1,7 @@
 package userAcctMgmt;
 
+import java.text.DecimalFormat;
+
 public class userAccount {
 
 	private String firstName;
@@ -11,8 +13,8 @@ public class userAccount {
 	private double gpa;
 
 	//ID HAS NOT BEEN ADDED YET
-	userAccount(String firstName, String lastName, String gender, String userName, String password, double gpa){
-		this.firstName = firstName;
+	userAccount(Name firstName, String lastName, String gender, String userName, String password, double gpa){
+		this.firstName = firstName.getFirstName();
 		this.lastName = lastName;
 		this.gender = gender;
 		this.userName = userName;
@@ -22,19 +24,36 @@ public class userAccount {
 	}
 
 
-    //EMITTERS
-	public String emitFirstName(){
-		return "0";
+    public userAccount() {
+
 	}
 
 
-	public String emitLastName(){
-		return "0";
+	//EMITTERS
+	public Name emitFirstName(Name[] listOfAllFirstNames){
+
+		int max = listOfAllFirstNames.length;
+        int randomNumber = (int) (Math.random() * max);
+        return listOfAllFirstNames[randomNumber];
+
 	}
 
 
-	public boolean isMale(String firstName){
-		return true;
+	public String emitLastName(String[] listOfLastNames){
+
+		int max = listOfLastNames.length;
+        int randomNumber = (int) (Math.random() * max);
+        return listOfLastNames[randomNumber];
+
+	}
+
+
+	public boolean isMale(Name firstName){
+		if(firstName.getGender() == "B"){
+			return true;
+		}
+		else
+		return false;
 	}
 
 
@@ -44,7 +63,12 @@ public class userAccount {
 
 
 	public double emitGPA(){
-	  return 0.0;
+      // TESTED //
+	  double randomGPA = (Math.random() * 5.0);
+	  DecimalFormat df = new DecimalFormat("#.##");
+	  randomGPA = Double.parseDouble(df.format(randomGPA));
+
+	  return randomGPA;
 	}
 
 
