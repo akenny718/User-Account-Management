@@ -1,12 +1,13 @@
-package userAcctMgmt;
+package testUserAcctMgmt;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import junit.framework.Assert;
+import userAcctMgmt.userAccount;
 
-public class TestEmitGPA {
+class TestEmitGPA {
 
 	@Test
 	// TEST DOES NOT NEED TO BE EQUAL TO EXPECTED, OBSERVE

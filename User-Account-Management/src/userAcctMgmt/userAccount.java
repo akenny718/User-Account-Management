@@ -1,25 +1,31 @@
 package userAcctMgmt;
 
 import java.text.DecimalFormat;
+import java.util.concurrent.atomic.AtomicInteger;
+
 
 public class userAccount {
 
 	private String firstName;
 	private String lastName;
+	private static int ID = 10000000;
 	private String iD;
 	private String gender;
 	private String userName;
 	private String password;
 	private double gpa;
+	
 
-	//ID HAS NOT BEEN ADDED YET
-	userAccount(Name firstName, String lastName, String gender, String userName, String password, double gpa){
-		this.firstName = firstName.getFirstName();
-		this.lastName = lastName;
-		this.gender = gender;
-		this.userName = userName;
-		this.password = password;
-		this.gpa = gpa;
+	
+	userAccount(Name name){
+		this.firstName = name.getFirstName();
+		this.lastName = name.getLastName();
+		this.gender = name.getGender();
+		this.ID++; //TESTED FOR ATOMIC INCREMENTS
+		this.iD = Integer.toString(this.ID);
+		this.userName = emitUserName(this.firstName, this.lastName, this.iD);
+		this.password = emitPassword();
+		this.gpa = emitGPA();
 
 	}
 
@@ -58,7 +64,10 @@ public class userAccount {
 
 
 	public String emitID(){
-		return "0";
+		// TESTED //
+		this.ID++; 
+		this.iD = Integer.toString(this.ID);
+		return this.iD;
 	}
 
 
@@ -72,8 +81,53 @@ public class userAccount {
 	}
 
 
-	public String emitUserName(){
-		return "0";
+	public String emitUserName(String firstName, String lastName, String iD){
+
+		// TESTED //
+		int j = 0;
+		char [] lastNameCharArray = lastName.toCharArray();
+		char [] firstNameCharArray = firstName.toCharArray();
+		char [] iDCharArray = iD.toCharArray();
+
+
+		if(lastNameCharArray.length < 4) {
+
+			char [] userNameCharArray = new char[lastNameCharArray.length + 2];
+
+			for(int i = 0; i < lastNameCharArray.length; i++) {
+
+				userNameCharArray[i] = lastNameCharArray[i];
+				j = i + 1;
+			}
+
+			userNameCharArray[j] = firstNameCharArray[0];
+			j++;
+			userNameCharArray[j] = iDCharArray[7];
+
+			String userNameString = new String(userNameCharArray);
+
+			return userNameString;
+
+		}
+		else {
+
+			char [] userNameCharArray = new char[6];
+
+			for(int i = 0; i < 4; i++){
+
+				userNameCharArray[i] = lastNameCharArray[i];
+				j = i + 1;
+			}
+
+			userNameCharArray[j] = firstNameCharArray[0];
+			j++;
+			userNameCharArray[j] = iDCharArray[7];
+
+			String userNameString = new String(userNameCharArray);
+
+			return userNameString;
+		}
+
 	}
 
 
