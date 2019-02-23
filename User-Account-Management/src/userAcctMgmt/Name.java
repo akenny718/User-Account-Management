@@ -1,4 +1,6 @@
 package userAcctMgmt;
+import java.io.BufferedReader;
+import java.io.FileReader;
 
 public class Name {
 
@@ -11,78 +13,103 @@ public class Name {
 	private Name[] listOfAllFirstNames = new Name[55];
 
 
-	Name(){
+	public Name(){
 
 	}
 
 
-	Name(String firstName, String lastName, String gender){
+	public Name(String firstName, String lastName, String gender){
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.gender = gender;
 	}
 
 
-
-	/*public Name[] getListOfBoysNames() {
-		setListOfBoysNames();
-		return listOfBoysNames;
-	}*/
-
-
-	public void setListOfBoysNames() {
+	public void setListOfBoysNames() throws Exception {
+		
+		// TESTED //
+		FileReader file = new FileReader("C:/Users/kasin/Desktop/boys_names.txt");
+		BufferedReader reader = new BufferedReader(file);
+		
+		String text = "";
+		String line = reader.readLine();
 
 	for(int i = 0; i < listOfBoysNames.length; i++) {
+		
+		text = line;
+		String[] s = text.split(" ");
 		Name boyName = new Name();
-		boyName.setFirstName("FromText");
+		boyName.setFirstName(s[0]);
 		boyName.setGender("B");
 		this.listOfBoysNames[i] = boyName;
+		line  = reader.readLine();
 	  }
 	
+	    reader.close();
     }
 
 
-	/*public Name[] getListOfGirlsNames() {
-		setListOfGirlsNames();
-		return listOfGirlsNames;
-	}*/
-
-
-	public void setListOfGirlsNames() {
+	public void setListOfGirlsNames() throws Exception {
 	
+		// TESTED //
+		FileReader file = new FileReader("C:/Users/kasin/Desktop/girls_names.txt");
+		BufferedReader reader = new BufferedReader(file);
+		
+		String text = "";
+		String line = reader.readLine();
+
 	for(int i = 0; i < listOfGirlsNames.length; i++) {
+		
+		text = line;
+		String[] s = text.split(" ");
 		Name girlName = new Name();
-		girlName.setFirstName("FromText");
+		girlName.setFirstName(s[0]);
 		girlName.setGender("G");
 		this.listOfGirlsNames[i] = girlName;
-	}
+		line  = reader.readLine();
+	  }
+	
+	    reader.close();
 		
 	}
 
 
-	public String[] getListOfLastNames() {
+	public String[] getListOfLastNames() throws Exception {
 		setListOfLastNames();
 		return listOfLastNames;
 	}
 
 
-	public void setListOfLastNames() {
+	public void setListOfLastNames() throws Exception {
 		
-		for(int i = 0; i < listOfLastNames.length; i++) {
-		    lastName = "FromText";
-			this.listOfLastNames[i] = lastName;
-		}
+		// TESTED //
+		FileReader file = new FileReader("C:/Users/kasin/Desktop/Last Names.txt");
+		BufferedReader reader = new BufferedReader(file);
+		
+		String text = "";
+		String line = reader.readLine();
+
+	for(int i = 0; i < listOfLastNames.length; i++) {
+		
+		text = line;
+		String[] s = text.split(" ");
+		this.listOfLastNames[i] = s[0];
+		line  = reader.readLine();
+	  }
+	
+	    reader.close();
 	}
 
 
-	public Name[] getListOfAllFirstNames() {
+	public Name[] getListOfAllFirstNames() throws Exception {
 		setListOfAllFirstNames();
 		return listOfAllFirstNames;
 	}
 
 
-	public void setListOfAllFirstNames() {
+	public void setListOfAllFirstNames() throws Exception {
 		
+		// TESTED //
 	    int  i = 0;
 	    int j = 0;
 	    

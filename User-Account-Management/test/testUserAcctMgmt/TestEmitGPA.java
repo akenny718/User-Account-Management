@@ -15,8 +15,8 @@ class TestEmitGPA {
 	// DOUBLE VALUES LESS THAN 5.00 AND GREATER THAN 0.00
 	public void emitGPATest() {
 		userAccount acct = new userAccount();
-		double actual = acct.emitGPA();
-		assertEquals(4.0, actual, 0.0);
+		String actual = acct.emitGPA();
+		assertEquals("4.00", actual, 0.00);
 	}
 
 }

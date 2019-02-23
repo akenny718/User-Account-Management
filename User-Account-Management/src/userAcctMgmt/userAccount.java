@@ -1,6 +1,7 @@
 package userAcctMgmt;
 
 import java.text.DecimalFormat;
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
@@ -13,45 +14,75 @@ public class userAccount {
 	private String gender;
 	private String userName;
 	private String password;
-	private double gpa;
+	private String gpa;
 	
 
-	
-	userAccount(Name name){
+	// TESTED //
+	public userAccount(Name name){
 		this.firstName = name.getFirstName();
 		this.lastName = name.getLastName();
 		this.gender = name.getGender();
-		this.ID++; //TESTED FOR ATOMIC INCREMENTS
+		this.ID++; 
 		this.iD = Integer.toString(this.ID);
 		this.userName = emitUserName(this.firstName, this.lastName, this.iD);
 		this.password = emitPassword();
 		this.gpa = emitGPA();
 
 	}
+	
+	
+	public userAccount(String firstName, String lastName, String gender, String userName, String passWord, String gpa){
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.gender = gender;
+		this.ID++; 
+		this.iD = Integer.toString(this.ID);
+		this.userName = userName;
+		
+		if(checkPassWord(passWord) == false) {
+			this.password = null;
+		}
+		else {
+		this.password = passWord;
+		}
+		
+		if(checkGPAEntry(gpa) == false) {
+			this.gpa = null;
+		}
+		else {
+			this.gpa = gpa;	
+		}
+		
+	}
 
 
     public userAccount() {
 
 	}
+    
 
 
 	//EMITTERS
 	public Name emitFirstName(Name[] listOfAllFirstNames){
 
+		// TESTED //
 		int max = listOfAllFirstNames.length;
         int randomNumber = (int) (Math.random() * max);
         return listOfAllFirstNames[randomNumber];
 
 	}
+	
 
 
 	public String emitLastName(String[] listOfLastNames){
 
+		// TESTED //
 		int max = listOfLastNames.length;
         int randomNumber = (int) (Math.random() * max);
         return listOfLastNames[randomNumber];
 
 	}
+	
 
 
 	public boolean isMale(Name firstName){
@@ -61,6 +92,7 @@ public class userAccount {
 		else
 		return false;
 	}
+	
 
 
 	public String emitID(){
@@ -69,16 +101,18 @@ public class userAccount {
 		this.iD = Integer.toString(this.ID);
 		return this.iD;
 	}
+	
 
 
-	public double emitGPA(){
+	public String emitGPA(){
       // TESTED //
-	  double randomGPA = (Math.random() * 5.0);
+	  double random = (Math.random() * 5.0);
 	  DecimalFormat df = new DecimalFormat("#.##");
-	  randomGPA = Double.parseDouble(df.format(randomGPA));
+	  String randomGPA = df.format(random);
 
 	  return randomGPA;
 	}
+	
 
 
 	public String emitUserName(String firstName, String lastName, String iD){
@@ -129,26 +163,137 @@ public class userAccount {
 		}
 
 	}
+	
 
 
 	public String emitPassword(){
-		return "0";
+		
+		// TESTED //
+		char [] passWordCharArray = new char[8];
+		
+		int randomChar = (int)(Math.random() * (127 - 33)) + 33;
+		passWordCharArray[0] = (char)randomChar;
+		
+		randomChar = (int)(Math.random() * (91 - 65)) + 65; // CAPITAL LETTERS
+		passWordCharArray[1] = (char)randomChar; 
+		
+        randomChar = (int)(Math.random() * (123 - 97)) + 97; // LOWER CASE LETTERS
+		passWordCharArray[2] = (char)randomChar;
+		
+        randomChar = (int)(Math.random() * (58 - 48)) + 48; // NUMBERS
+		passWordCharArray[3] = (char)randomChar;
+		
+		// SYMBOLS
+		randomChar = (int)(Math.random() * (48 - 33)) + 33; // ! - /
+		passWordCharArray[4] = (char)randomChar;
+		
+		randomChar = (int)(Math.random() * (65 - 58)) + 58; // : - @
+		passWordCharArray[5] = (char)randomChar;
+		
+		randomChar = (int)(Math.random() * (97 - 91)) + 91; // [ - `
+		passWordCharArray[6] = (char)randomChar;
+		
+		randomChar = (int)(Math.random() * (127 - 123)) + 123; // { - ~
+		passWordCharArray[7] = (char)randomChar;
+		
+		 
+		String passWordString = new String(passWordCharArray);
+		return passWordString;
 	}
-
-
-	public void sortAccounts(){
-
+	
+	
+	
+	public userAccount emitUserAccount() throws Exception {
+		
+		// TESTED //
+		Name name = new Name();
+		  
+		  Name[] listOfAllFirstNames = name.getListOfAllFirstNames();
+		  String[] listOfLastNames = name.getListOfLastNames();
+		  userAccount acct = new userAccount();
+		  
+		  name = acct.emitFirstName(listOfAllFirstNames);
+		  name.setLastName(acct.emitLastName(listOfLastNames));
+		  
+		  userAccount newAcct = new userAccount(name);
+		  return newAcct;
 	}
-
-
-	public boolean searchAccount(String username, String password){
+	
+	
+	
+	public boolean checkPassWord(String passWord) {
+		
+		// TESTED //
+		int numCase = 0;
+	    int specCase = 0;
+	    int upCase = 0;
+	    int loCase = 0;
+	    
+	char[] charPassWordArray = passWord.toCharArray();
+		
+		if(charPassWordArray.length < 8) {
+			return false;
+		}
+		
+		for(int i = 0; i < charPassWordArray.length; i++) {
+			char c = charPassWordArray[i];
+			
+			if(Character.isUpperCase(c)){
+                upCase++;
+            }
+            if(Character.isLowerCase(c)){
+                loCase++;
+            }
+            if(Character.isDigit(c)){
+               numCase++;
+            }
+            if(c >= 33 && c <= 47||c >= 58 && c <= 64 || c >= 91 && c <= 96 || c >= 123 && c <= 126){
+                specCase++;
+            }
+            
+            if(c < 33 || c >= 127) {
+            	return false;
+            }
+        }
+		
+		if(specCase >= 1 && loCase >= 1 && upCase >= 1 && numCase >=1){
+            return true;
+        }
+		else{
+			return false;
+		}
+	}
+	
+	
+	
+	public boolean checkGPAEntry(String gpa) {
+		
+		// TESTED //
+		char[] gpaCharArray = gpa.toCharArray();
+		
+		if(gpaCharArray.length < 4) {
+			return false;
+		}
+		
+		if(gpaCharArray[0] < 48 || gpaCharArray[0] > 52) {
+			return false;
+		}
+		
+		if(gpaCharArray[1] != '.') {
+			return false;
+		}
+		
+		if(gpaCharArray[2] < 48 || gpaCharArray[2] > 57) {
+			return false;
+		}
+		
+		if(gpaCharArray[3] < 48 || gpaCharArray[3] > 57) {
+			return false;
+		}
+			
 		return true;
 	}
 
-
-	public boolean searchAccount(String username){
-		return true;
-	}
 
 
 
@@ -183,7 +328,7 @@ public class userAccount {
 	}
 
 
-	public double getGpa() {
+	public String getGpa() {
 		return gpa;
 	}
 
