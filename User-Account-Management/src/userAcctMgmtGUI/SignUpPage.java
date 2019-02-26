@@ -69,7 +69,7 @@ public class SignUpPage extends JFrame {
 					JOptionPane.showMessageDialog(null,"Please enter password in correct format");
 				}
 				
-				if(newAcct.checkGPAEntry(gpa) == true) {
+				else if(newAcct.checkGPAEntry(gpa) == true) {
 					
 					try {
 						userAccountBag acctBag = new userAccountBag();
