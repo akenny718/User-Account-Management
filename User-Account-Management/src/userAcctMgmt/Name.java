@@ -117,16 +117,22 @@ public class Name {
 	    setListOfGirlsNames();
 		
 		while(i < listOfBoysNames.length) {
-			listOfAllFirstNames[i] = listOfBoysNames[i];
+			listOfAllFirstNames[i] = listOfBoysNames[i].clone();
 		i++;
 		}
 		
 		while(j < listOfGirlsNames.length) {
-			listOfAllFirstNames[i] = listOfGirlsNames[j];
+			listOfAllFirstNames[i] = listOfGirlsNames[j].clone();
 			i++;
 			j++;
 		}
 		
+	}
+	
+	
+	public Name clone() {
+		Name clone = new Name(firstName, lastName, gender);
+		return clone;
 	}
 
 

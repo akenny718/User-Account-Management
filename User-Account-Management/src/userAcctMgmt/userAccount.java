@@ -40,14 +40,14 @@ public class userAccount {
 		this.userName = userName;
 		
 		if(checkPassWord(passWord) == false) {
-			this.password = null;
+			this.password = "0";
 		}
 		else {
 		this.password = passWord;
 		}
 		
 		if(checkGPAEntry(gpa) == false) {
-			this.gpa = null;
+			this.gpa = "0";
 		}
 		else {
 			this.gpa = gpa;	

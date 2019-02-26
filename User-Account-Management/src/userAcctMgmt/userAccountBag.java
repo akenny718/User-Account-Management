@@ -46,7 +46,32 @@ public class userAccountBag {
 	
 
 
-	public boolean searchAccount(String username, String password){
+	public boolean searchAccount(String userName, String passWord){
+		 
+		    // TESTED //
+		    userAccount node;
+	        userAccount temp;
+	        // access the node using a sequential search
+	        int i = 0;
+	        while (i < next && userName != listOfAccounts[i].getUserName()) {
+	            i++;
+	        }
+	        if (i == next){ // node not found
+	            return false;
+	        }
+	        
+	        if(listOfAccounts[i].getPassword() != passWord) {
+	        	return false;
+	        }
+	        
+	        //deep copy the node's information into the client's node
+	        node = listOfAccounts[i];
+	        // move the node up one position in the array, unless it is the first node
+	        if (i != 0){ // bubble-up accessed node
+	            temp = listOfAccounts[i - 1];
+	            listOfAccounts[i - 1] = listOfAccounts[i];
+	            listOfAccounts[i] = temp;
+	        }
 		return true;
 	}
 
