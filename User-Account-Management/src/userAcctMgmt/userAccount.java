@@ -289,6 +289,12 @@ public class userAccount {
 			
 		return true;
 	}
+	
+	
+	public userAccount clone() {
+		userAccount clone = new userAccount(firstName, lastName, gender, password, gpa);
+		return clone;
+	}
 
 
 

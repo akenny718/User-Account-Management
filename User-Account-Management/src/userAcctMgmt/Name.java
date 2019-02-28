@@ -28,7 +28,7 @@ public class Name {
 	public void setListOfBoysNames() throws Exception {
 		
 		// TESTED //
-		FileReader file = new FileReader("C:/Users/kasin/Desktop/boys_names.txt");
+		FileReader file = new FileReader("boys_names.txt");
 		BufferedReader reader = new BufferedReader(file);
 		
 		String text = "";
@@ -52,7 +52,7 @@ public class Name {
 	public void setListOfGirlsNames() throws Exception {
 	
 		// TESTED //
-		FileReader file = new FileReader("C:/Users/kasin/Desktop/girls_names.txt");
+		FileReader file = new FileReader("girls_names.txt");
 		BufferedReader reader = new BufferedReader(file);
 		
 		String text = "";
@@ -83,7 +83,7 @@ public class Name {
 	public void setListOfLastNames() throws Exception {
 		
 		// TESTED //
-		FileReader file = new FileReader("C:/Users/kasin/Desktop/Last Names.txt");
+		FileReader file = new FileReader("Last Names.txt");
 		BufferedReader reader = new BufferedReader(file);
 		
 		String text = "";

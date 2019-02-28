@@ -55,6 +55,7 @@ public class userAccountBag {
 	            i++;
 	        }
 	        if (i == next){ // node not found
+	        	System.out.print("HEY");
 	            return false;
 	        }
 	        
@@ -108,48 +109,6 @@ public class userAccountBag {
 		this.listOfAccounts = listOfAccounts;
 	}
 	
-	
-	
-	
-	 /* public void save(){
-
-	    	try (ObjectOutputStream ofo = new ObjectOutputStream(new FileOutputStream("userAccountBag.data")) ) {
-
-	    		ofo.writeObject(this);
-	   			userAccount acct = new userAccount();
-	   			ofo.writeInt(acct.getID());
-	   			System.out.println("Save successful");
-	   			ofo.close();
-	   		}
-	    	catch (IOException e) {
-				e.printStackTrace();
-			}
-
-	    }
-
-
-
-
-		public userAccountBag load(){
-
-	    	try ( ObjectInputStream ofi = new ObjectInputStream(new FileInputStream("userAccountBag.data")) ) {
-
-	    		userAccountBag restoredAcctBag = (userAccountBag)ofi.readObject();
-	    		userAccount acct = new userAccount();
-	    		acct.setID(ofi.readInt());
-	   			ofi.close();
-	   			return restoredAcctBag;
-
-	    	} catch (ClassNotFoundException e) {
-				//e.printStackTrace();
-				return null;
-
-	    	} catch (IOException e) {
-				//e.printStackTrace();
-				return null;
-			}
-
-	    }*/
 
 
 }
