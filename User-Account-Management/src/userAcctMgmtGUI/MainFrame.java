@@ -4,13 +4,13 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
-import userAcctMgmt.userAccount;
-import userAcctMgmt.userAccountBag;
+import userAcctMgmt.UserAccount;
+import userAcctMgmt.UserAccountBag;
 
 
 public class MainFrame extends JFrame {
 	
-	userAccountBag acctBag = new userAccountBag();
+	UserAccountBag acctBag = new UserAccountBag();
 	FlowLayout flow = new FlowLayout();
 	JPanel panel = new JPanel();
 	
@@ -135,7 +135,7 @@ public class MainFrame extends JFrame {
 					JOptionPane.showMessageDialog(null,"Please fill in all fields");
 				}else {
 				
-				userAccount newAcct = new userAccount(firstName, lastName, gender, passWord, gpa);
+				UserAccount newAcct = new UserAccount(firstName, lastName, gender, passWord, gpa);
 				
 						
 				if(newAcct.checkPassWord(passWord) == false) {

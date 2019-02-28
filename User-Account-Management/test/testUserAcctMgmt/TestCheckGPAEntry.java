@@ -4,13 +4,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import userAcctMgmt.userAccount;
+import userAcctMgmt.UserAccount;
+import userAcctMgmt.UserAccount;
 
 class TestCheckGPAEntry {
 
 	@Test
 	void testCheckGPAEntry() {
-		userAccount acct = new userAccount();
+		UserAccount acct = new UserAccount();
 		String gpa = "4.2+";
 		boolean actual = acct.checkGPAEntry(gpa);
 		assertEquals(false, actual);

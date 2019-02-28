@@ -4,13 +4,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import userAcctMgmt.userAccount;
+import userAcctMgmt.UserAccount;
 
 class TestEmitLastName {
 
 	@Test
 	void testEmitLastName() {
-		userAccount acct = new userAccount();
+		UserAccount acct = new UserAccount();
 		String[] listOfLastNames = new String[3];
 		String ln = "Joe";
 		String ln2 = "Ebro";

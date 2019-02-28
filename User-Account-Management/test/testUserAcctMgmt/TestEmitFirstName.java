@@ -4,8 +4,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import userAcctMgmt.userAccount;
+import userAcctMgmt.UserAccount;
 import userAcctMgmt.Name;
+import userAcctMgmt.UserAccount;
 
 class TestEmitFirstName {
 
@@ -15,7 +16,7 @@ class TestEmitFirstName {
 	  
 	  Name[] listOfAllFirstNames = name.getListOfAllFirstNames();
 	  String[] listOfLastNames = name.getListOfLastNames();
-	  userAccount acct = new userAccount();
+	  UserAccount acct = new UserAccount();
 	  
 	//System.out.print(acct.emitFirstName(listOfAllFirstNames).getFirstName());
 	//System.out.print(acct.emitLastName(lastNames));
@@ -23,7 +24,7 @@ class TestEmitFirstName {
 	  name = acct.emitFirstName(listOfAllFirstNames);
 	  name.setLastName(acct.emitLastName(listOfLastNames));
 	  
-	  userAccount newAcct = new userAccount(name);
+	  UserAccount newAcct = new UserAccount(name);
 	  
 	  System.out.print(newAcct.getFirstName());
 	  System.out.println(newAcct.getLastName());

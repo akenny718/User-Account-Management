@@ -6,18 +6,18 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class userAccountBag {
+public class UserAccountBag {
 	
 	private int size;
 	private int next;
-	private userAccount[] listOfAccounts;
+	private UserAccount[] listOfAccounts;
 	
 	
-	public userAccountBag() throws Exception {
+	public UserAccountBag() throws Exception {
 		// TESTED //
 		next = 0;
-		listOfAccounts = new userAccount[5000];
-		userAccount newAcct = new userAccount();
+		listOfAccounts = new UserAccount[5000];
+		UserAccount newAcct = new UserAccount();
 		
 		for(int i = 0; i < 3000; i++) {
 			listOfAccounts[next] = newAcct.emitUserAccount();
@@ -26,15 +26,15 @@ public class userAccountBag {
 	}
 	
 	
-	public userAccountBag(int size) {
+	public UserAccountBag(int size) {
 		next = 0;
 		this.size = size;
-		listOfAccounts = new userAccount[size];
+		listOfAccounts = new UserAccount[size];
 	}
 	
 	
 	
-	public boolean insertAccount(userAccount newAcct) {
+	public boolean insertAccount(UserAccount newAcct) {
 		
         // TESTED //
 		listOfAccounts[next] = newAcct;
@@ -47,8 +47,8 @@ public class userAccountBag {
 	public boolean searchAccount(String userName, String passWord){
 		 
 		    // TESTED //
-		    userAccount node;
-	        userAccount temp;
+		    UserAccount node;
+	        UserAccount temp;
 	        // access the node using a sequential search
 	        int i = 0;
 	        while (i < next && !listOfAccounts[i].getUserName().equals(userName)) {
@@ -100,12 +100,12 @@ public class userAccountBag {
 	}
 
 
-	public userAccount[] getListOfAccounts() {
+	public UserAccount[] getListOfAccounts() {
 		return listOfAccounts;
 	}
 
 
-	public void setListOfAccounts(userAccount[] listOfAccounts) {
+	public void setListOfAccounts(UserAccount[] listOfAccounts) {
 		this.listOfAccounts = listOfAccounts;
 	}
 	

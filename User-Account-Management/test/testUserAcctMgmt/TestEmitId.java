@@ -4,14 +4,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import userAcctMgmt.userAccount;
+import userAcctMgmt.UserAccount;
 
 class TestEmitId {
 
 	@Test
 	void TestEmitId() {
 		
-		userAccount acct = new userAccount();
+		UserAccount acct = new UserAccount();
 		String actual = "0";
 		String j = "0";
 		for(int i = 0; i < 4; i++) {

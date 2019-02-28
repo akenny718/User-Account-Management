@@ -5,7 +5,7 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
-public class userAccount {
+public class UserAccount {
 
 	private String firstName;
 	private String lastName;
@@ -18,7 +18,7 @@ public class userAccount {
 	
 
 	// TESTED //
-	public userAccount(Name name){
+	public UserAccount(Name name){
 		this.firstName = name.getFirstName();
 		this.lastName = name.getLastName();
 		this.gender = name.getGender();
@@ -31,7 +31,7 @@ public class userAccount {
 	}
 	
 	
-	public userAccount(String firstName, String lastName, String gender, String passWord, String gpa){
+	public UserAccount(String firstName, String lastName, String gender, String passWord, String gpa){
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.gender = gender;
@@ -56,7 +56,7 @@ public class userAccount {
 	}
 
 
-    public userAccount() {
+    public UserAccount() {
 
 	}
     
@@ -203,19 +203,19 @@ public class userAccount {
 	
 	
 	
-	public userAccount emitUserAccount() throws Exception {
+	public UserAccount emitUserAccount() throws Exception {
 		
 		// TESTED //
 		Name name = new Name();
 		  
 		  Name[] listOfAllFirstNames = name.getListOfAllFirstNames();
 		  String[] listOfLastNames = name.getListOfLastNames();
-		  userAccount acct = new userAccount();
+		  UserAccount acct = new UserAccount();
 		  
 		  name = acct.emitFirstName(listOfAllFirstNames);
 		  name.setLastName(acct.emitLastName(listOfLastNames));
 		  
-		  userAccount newAcct = new userAccount(name);
+		  UserAccount newAcct = new UserAccount(name);
 		  return newAcct;
 	}
 	
@@ -291,8 +291,8 @@ public class userAccount {
 	}
 	
 	
-	public userAccount clone() {
-		userAccount clone = new userAccount(firstName, lastName, gender, password, gpa);
+	public UserAccount clone() {
+		UserAccount clone = new UserAccount(firstName, lastName, gender, password, gpa);
 		return clone;
 	}
 

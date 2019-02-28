@@ -4,13 +4,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import userAcctMgmt.userAccount;
+import userAcctMgmt.UserAccount;
 
 class TestEmitPassWord {
 
 	@Test
 	void testEmitPassWord() {
-		userAccount acct = new userAccount();
+		UserAccount acct = new UserAccount();
 		String actual = acct.emitPassword();
 		System.out.println(actual);
 	}

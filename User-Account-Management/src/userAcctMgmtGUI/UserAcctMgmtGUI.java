@@ -3,7 +3,7 @@ package userAcctMgmtGUI;
 import javax.swing.*;
 
 
-public class userAcctMgmtGUI {
+public class UserAcctMgmtGUI {
 
 
 	public static void main(String[] args) {

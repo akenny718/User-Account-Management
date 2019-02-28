@@ -4,15 +4,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import userAcctMgmt.userAccount;
-import userAcctMgmt.userAccountBag;
+import userAcctMgmt.UserAccount;
+import userAcctMgmt.UserAccountBag;
 import java.util.Scanner;
 
 class TestSearchAccount {
 
 	@Test
 	void testSearchAccount() throws Exception {
-		userAccountBag acctBag = new userAccountBag();
+		UserAccountBag acctBag = new UserAccountBag();
 		///Scanner input = new Scanner(System.in);
 	
 		System.out.print(acctBag.getListOfAccounts()[2999].getFirstName());

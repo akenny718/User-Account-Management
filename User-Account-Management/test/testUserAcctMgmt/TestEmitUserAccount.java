@@ -4,13 +4,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import userAcctMgmt.userAccount;
+import userAcctMgmt.UserAccount;
 
 class TestEmitUserAccount {
 
 	@Test
 	void testEmitUserAccount() throws Exception {
-		userAccount acct = new userAccount();
+		UserAccount acct = new UserAccount();
 		System.out.print(acct.emitUserAccount().getFirstName());
 	}
 
