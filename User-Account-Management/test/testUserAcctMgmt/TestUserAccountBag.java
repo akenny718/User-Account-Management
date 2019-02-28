@@ -17,7 +17,7 @@ class TestUserAccountBag {
 		System.out.print(acctBag.getListOfAccounts()[2000].getFirstName());
 		System.out.println(acctBag.getListOfAccounts()[2000].getLastName());
 		String userName = acctBag.getListOfAccounts()[2000].getUserName();
-		userAccount acct = new userAccount("Bob", "Simpson", "B", "BobSimpson123", "aB!44444", "3.10");
+		userAccount acct = new userAccount("Bob", "Simpson", "B", "aB!44444", "3.10");
 		boolean actual = acctBag.insertAccount(acct);
 		//assertEquals(true, actual);
 		System.out.print(acctBag.getListOfAccounts()[3000].getFirstName());

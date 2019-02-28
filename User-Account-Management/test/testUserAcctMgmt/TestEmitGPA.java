@@ -16,7 +16,7 @@ class TestEmitGPA {
 	public void emitGPATest() {
 		userAccount acct = new userAccount();
 		String actual = acct.emitGPA();
-		assertEquals("4.00", actual, 0.00);
+		assertEquals("4.0", actual, 0.0);
 	}
 
 }

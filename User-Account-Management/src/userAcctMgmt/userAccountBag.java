@@ -1,5 +1,11 @@
 package userAcctMgmt;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
 public class userAccountBag {
 	
 	private int size;
@@ -31,16 +37,8 @@ public class userAccountBag {
 	public boolean insertAccount(userAccount newAcct) {
 		
         // TESTED //
-		for(int i = 0; i < next; i++) {
-			
-			if(listOfAccounts[i].getUserName() == newAcct.getUserName()) {
-				return false;
-			}
-		}
-		
 		listOfAccounts[next] = newAcct;
 		next++;
-		
 		return true;
 	}
 	
@@ -53,18 +51,17 @@ public class userAccountBag {
 	        userAccount temp;
 	        // access the node using a sequential search
 	        int i = 0;
-	        while (i < next && userName != listOfAccounts[i].getUserName()) {
+	        while (i < next && !listOfAccounts[i].getUserName().equals(userName)) {
 	            i++;
 	        }
 	        if (i == next){ // node not found
 	            return false;
 	        }
 	        
-	        if(listOfAccounts[i].getPassword() != passWord) {
+	        if(!listOfAccounts[i].getPassword().equals(passWord)) {
 	        	return false;
 	        }
 	        
-	        //deep copy the node's information into the client's node
 	        node = listOfAccounts[i];
 	        // move the node up one position in the array, unless it is the first node
 	        if (i != 0){ // bubble-up accessed node
@@ -110,11 +107,49 @@ public class userAccountBag {
 	public void setListOfAccounts(userAccount[] listOfAccounts) {
 		this.listOfAccounts = listOfAccounts;
 	}
+	
+	
+	
+	
+	 /* public void save(){
+
+	    	try (ObjectOutputStream ofo = new ObjectOutputStream(new FileOutputStream("userAccountBag.data")) ) {
+
+	    		ofo.writeObject(this);
+	   			userAccount acct = new userAccount();
+	   			ofo.writeInt(acct.getID());
+	   			System.out.println("Save successful");
+	   			ofo.close();
+	   		}
+	    	catch (IOException e) {
+				e.printStackTrace();
+			}
+
+	    }
 
 
-	
-	
-	
-	
+
+
+		public userAccountBag load(){
+
+	    	try ( ObjectInputStream ofi = new ObjectInputStream(new FileInputStream("userAccountBag.data")) ) {
+
+	    		userAccountBag restoredAcctBag = (userAccountBag)ofi.readObject();
+	    		userAccount acct = new userAccount();
+	    		acct.setID(ofi.readInt());
+	   			ofi.close();
+	   			return restoredAcctBag;
+
+	    	} catch (ClassNotFoundException e) {
+				//e.printStackTrace();
+				return null;
+
+	    	} catch (IOException e) {
+				//e.printStackTrace();
+				return null;
+			}
+
+	    }*/
+
 
 }

@@ -31,13 +31,13 @@ public class userAccount {
 	}
 	
 	
-	public userAccount(String firstName, String lastName, String gender, String userName, String passWord, String gpa){
+	public userAccount(String firstName, String lastName, String gender, String passWord, String gpa){
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.gender = gender;
 		this.ID++; 
 		this.iD = Integer.toString(this.ID);
-		this.userName = userName;
+		this.userName = emitUserName(firstName, lastName, this.iD);
 		
 		if(checkPassWord(passWord) == false) {
 			this.password = "0";
@@ -107,7 +107,7 @@ public class userAccount {
 	public String emitGPA(){
       // TESTED //
 	  double random = (Math.random() * 5.0);
-	  DecimalFormat df = new DecimalFormat("#.##");
+	  DecimalFormat df = new DecimalFormat("#.#");
 	  String randomGPA = df.format(random);
 
 	  return randomGPA;
@@ -271,7 +271,7 @@ public class userAccount {
 		// TESTED //
 		char[] gpaCharArray = gpa.toCharArray();
 		
-		if(gpaCharArray.length < 4) {
+		if(gpaCharArray.length != 3) {
 			return false;
 		}
 		
@@ -284,10 +284,6 @@ public class userAccount {
 		}
 		
 		if(gpaCharArray[2] < 48 || gpaCharArray[2] > 57) {
-			return false;
-		}
-		
-		if(gpaCharArray[3] < 48 || gpaCharArray[3] > 57) {
 			return false;
 		}
 			
